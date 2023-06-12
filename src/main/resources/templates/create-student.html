@@ -16,28 +16,15 @@
         <div class="row mt-5">
             <div class="col-4 offset-4">
 
-                <form class="fondo-form" action="ServeltCrudStudent" method="POST" id="form-create-student">
-                    <div class="mb-3">
-                        <label for="id" class="form-label">ID del estudiante</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="id"
-                            name="id"
-                            value=""
-                            required
-                            readonly
-                        />
-                    </div>
-
+                <form action="@{/students}" class="fondo-form" th:object="${student}" method="POST">
+            
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
                         <input
                             type="text"
                             class="form-control"
                             id="name"
-                            name="name"
-                            value=""
+                            th:field="*{name}"
                             required
                         />
                     </div>
@@ -48,8 +35,7 @@
                             type="text"
                             class="form-control"
                             id="lastname"
-                            name="lastname"
-                            value=""
+                            th:field="*{lastname}"
                             required
                         />
                     </div>
@@ -60,8 +46,7 @@
                             type="email"
                             class="form-control"
                             id="email"
-                            name="email"
-                            value=""
+                            th:field="*{email}"
                             required
                         />
                     </div>
