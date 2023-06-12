@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class StudentController {
   
   // localhost:8080/students
-  // localhost:8080 => http://localhost:8080/
+  // http://localhost:8080/
+  // http://localhost:8080
   @GetMapping({"/students", "/"})
   public String getAllStudents() {
     return "students";
