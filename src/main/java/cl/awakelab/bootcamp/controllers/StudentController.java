@@ -24,7 +24,7 @@ public class StudentController {
     
     Student student = new Student();
     model.addAttribute("student", student);
-    return "create-student";
+    return "create-student"; // create-student.html
   }
   
   //http://localhost:8080/students
