@@ -13,6 +13,7 @@
     <!-- Navbar -->
     <div th:replace="fragments/navbar :: navbar"></div>
     <!-- End Navbar -->
+    
     <div class="container mt-5">
         <h2 class="text-center mb-4">List Students</h2>
         <div class="container">
@@ -27,7 +28,6 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Lastname</th>
                         <th scope="col">Email</th>
@@ -37,17 +37,17 @@
                     <tbody class="table-group-divider">
                     <!-- el ciclo for de java -->
             
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                      <tr th:each="students: ${students}">
+                        <td th:text="${students.name}"></td>
+                        <td th:text="${students.lastname}"></td>
+                        <td th:text="${students.email}"></td>
                         <td>
                          <a class="text-success" href="#"><i class="fa-solid fa-pen-to-square mx-3"></i></a>	 
                          
  						 <a class="text-danger" href="#"><i class="fa-solid fa-trash"></i></a>
                         </td>
                       </tr>
+         
                       <!-- fin del for de java -->
                       
                     </tbody>
