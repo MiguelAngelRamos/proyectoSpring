@@ -18,7 +18,7 @@
         <div class="row mt-5">
             <div class="col-4 offset-4">
 
-                <form th:action="@{/students}" class="fondo-form" th:object="${student}" method="POST">
+                <form th:action="@{/students/{id}(id=${student.id})}" class="fondo-form" th:object="${student}" method="POST">
             
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>

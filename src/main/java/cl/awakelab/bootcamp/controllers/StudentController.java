@@ -44,6 +44,7 @@ public class StudentController {
     return "redirect:/students";
   }
   
+  // students/edit/1
   @GetMapping("/students/edit/{id}")
   public String showFormEditStudent(@PathVariable Long id, @ModelAttribute("student") Student student, Model model) {
     Optional<Student> optionalStudent = service.getStudentById(id); 
@@ -51,7 +52,31 @@ public class StudentController {
     if(!optionalStudent.isPresent()) {
       throw new StudentNotFoundException("No se encontro un estudiante con ese id: " + id);
     } 
-    return "";
+    
+    Student studentExists = optionalStudent.get(); // obtengo al estudiante por su id
+    model.addAttribute("student", studentExists);
+    return "edit-student";
+  }
+  
+  
+  @PostMapping("/students/{id}")
+  public String updateStudent(@PathVariable Long id, @ModelAttribute("student") Student student, Model model) {
+    Optional<Student> optionalStudent = service.getStudentById(id); 
+    
+    if(!optionalStudent.isPresent()) {
+      throw new StudentNotFoundException("No se encontro un estudiante con ese id: " + id);
+    } 
+    
+    Student studentExists = optionalStudent.get(); // obtengo al estudiante por su id
+    
+    // Construimos al estudiante con los nuevos datos
+    studentExists.setId(id);
+    studentExists.setName(student.getName());
+    studentExists.setLastname(student.getLastname());
+    studentExists.setEmail(student.getEmail());
+    
+    service.updateStudent(studentExists);
+    return "redirect:/students";
   }
 
 }
