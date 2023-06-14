@@ -1,10 +1,13 @@
 package cl.awakelab.bootcamp.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import cl.awakelab.bootcamp.entitys.Student;
@@ -41,20 +44,20 @@ public class StudentController {
     return "redirect:/students";
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  @GetMapping("/students/edit/{id}")
+  public String showFormEditStudent(@PathVariable Long id, @ModelAttribute("student") Student student, Model model) {
+    Optional<Student> optionalStudent = service.getStudentById(id); 
+    
+    if(!optionalStudent.isPresent()) {
+      throw new StudentNotFoundException("No se encontro un estudiante con ese id: " + id);
+    } 
+    return "";
+  }
 
+}
+
+class StudentNotFoundException extends RuntimeException {
+  public StudentNotFoundException(String message) {
+    super(message);
+  }
 }

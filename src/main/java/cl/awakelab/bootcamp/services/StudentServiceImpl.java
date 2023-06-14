@@ -32,20 +32,17 @@ public class StudentServiceImpl implements IStudentService {
 
   @Override
   public Optional<Student> getStudentById(Long id) {
-    // TODO Auto-generated method stub
-    return Optional.empty();
+    return repository.findById(id);
   }
 
   @Override
   public Student updateStudent(Student student) {
-    // TODO Auto-generated method stub
-    return null;
+    return repository.save(student);
   }
 
   @Override
   public void deleteStudentById(Long id) {
-    // TODO Auto-generated method stub
-    
+    repository.deleteById(id);
   }
 
 }
