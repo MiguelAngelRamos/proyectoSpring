@@ -78,6 +78,14 @@ public class StudentController {
     service.updateStudent(studentExists);
     return "redirect:/students";
   }
+  
+  // Delete User
+  // localhost:8080/students-delete/4
+  @GetMapping("/students-delete/{id}")
+  public String deleteStudent(@PathVariable Long id) {
+    service.deleteStudentById(id);
+    return "redirect:/students";
+  }
 
 }
 
