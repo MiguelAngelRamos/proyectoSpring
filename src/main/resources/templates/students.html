@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	>
   <head th:replace="fragments/head::headerFragment('Student')"></head>
 <body>
     <!-- Navbar -->
@@ -26,7 +29,7 @@
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
-                    <tbody class="table-group-divider">
+                    <tbody>
                     <!-- el ciclo for de java -->
             
                       <tr th:each="students: ${students}">
